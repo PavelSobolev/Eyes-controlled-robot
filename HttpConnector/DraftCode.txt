@@ -1,0 +1,189 @@
+﻿using Newtonsoft.Json;
+using System;
+using System.IO;
+using System.Net;
+using System.Net.NetworkInformation;
+using System.Threading.Tasks;
+using System.Timers;
+
+// create timer and check availability of connection and check IP address
+// if value of address is changed or connection is unavailable - fire appropriate events
+
+namespace Connectors
+{
+    public class ConnectionStatusEventArgs : EventArgs
+    {
+        public bool IsRaspberryAvailable { get; set; } = false;
+    }
+
+    public static class HttpConnector
+    {
+        private static readonly string FirebaseAddress = "https://gazeinteractor.firebaseio.com/.json";
+
+        private static Timer updateTimer = new Timer();
+        private static readonly int DefaultInterval = 5000;
+        private static readonly int MinInterval = 1000;
+        private static readonly int MaxtInterval = 20000;
+        private static int Interval = DefaultInterval;
+
+        private static bool CurrentStatus = false;
+
+        public static event EventHandler<ConnectionStatusEventArgs> ConnectionStateChnged;
+
+        static HttpConnector()
+        {
+            CurrentStatus = IsRaspberryAvailable;
+            updateTimer.Interval = Interval;
+            updateTimer.Enabled = true;
+            updateTimer.Elapsed += UpdateConnectionStatus;
+            updateTimer.Start();
+        }        
+
+        
+        /// <summary>
+        /// Event happens every {Interval} secs.
+        /// </summary>
+        private static void UpdateConnectionStatus(object sender, ElapsedEventArgs e)
+        {            
+            if (CurrentStatus!=IsRaspberryAvailable)
+            {
+                CurrentStatus = IsRaspberryAvailable;
+
+                var status = new ConnectionStatusEventArgs();
+                status.IsRaspberryAvailable = CurrentStatus;
+                ConnectionStateChnged?.Invoke(new object(), status);
+            }
+        }        
+
+        public static int UpdateInterval
+        {
+            set
+            {
+                if (value >= MinInterval && value <= MaxtInterval)
+                {
+                    Interval = value;
+                }
+                else
+                {
+                    throw new Exception($"Update interval is invalid (should be between {MinInterval} and {MaxtInterval}.)");
+                }
+            }
+
+            get
+            {
+                return Interval;
+            }
+        }
+
+        /// <summary>
+        /// Check availability of net connection
+        /// </summary>
+        private static bool IsConnectionAvailable
+        {
+            get
+            {
+                return NetworkInterface.GetIsNetworkAvailable();
+            }
+        }
+
+        /// <summary>
+        /// Checks availability of connection to remote Raspberry PI computer
+        /// </summary>
+        public static bool IsRaspberryAvailable
+        {
+            get
+            {
+                string IP = RaspberryIPAdderss;
+
+                if (IsConnectionAvailable)
+                {
+                    if (IP.Length > 0)
+                    {
+                        if (new Ping().Send(IP).Status == IPStatus.Success)
+                        {
+                            return true;
+                        }
+                        else
+                            return false;
+                    }
+                    else
+                        return false;                    
+                }
+                else
+                    return false;
+            }
+        }
+
+        /// <summary>
+        /// Returns actual IP LAN address of RaspberryPI
+        /// (Raspberry reports this address to Firebase DB in real time)
+        /// </summary>
+        public static string RaspberryIPAdderss
+        {
+            get
+            {
+                if (IsConnectionAvailable)
+                {
+                    //Debug.WriteLine(FirebaseAddress);
+                    var raspIpClient = new WebClient();
+                    string JsonStr = raspIpClient.DownloadString(new Uri(FirebaseAddress));
+
+                    /*using (var jreader = new JsonTextReader(new StringReader(res)))
+                    {
+                        jreader.Read();
+                        jreader.Read();
+                        jreader.Read();
+                        return jreader.Value.ToString();
+                        //Debug.WriteLine($"-- {res} -- {} --");
+                    }*/
+
+                    return GetFireBaseJSONString(JsonStr);
+                }
+                else
+                    return string.Empty;
+            }
+        }
+
+        /// <summary>
+        /// async version of RaspberryIPAdderss
+        /// </summary>
+        public static async Task<string> RaspberryIPAdderssAsync()
+        {
+            if (IsConnectionAvailable)
+            {
+                var raspIpClient = new WebClient();
+                var JsonStr = await raspIpClient.DownloadStringTaskAsync(new Uri(FirebaseAddress));
+
+                /*using (var jreader = new JsonTextReader(new StringReader(res)))
+                {
+                    jreader.Read();
+                    jreader.Read();
+                    jreader.Read();
+                    return jreader.Value.ToString();
+                }*/
+
+                return GetFireBaseJSONString(JsonStr);
+            }
+            else
+                return string.Empty;
+        }
+
+        /// <summary>
+        /// Reads data from Firebase database in JSON format
+        /// </summary>
+        /// <param name="resourceAddress"></param>
+        /// <returns></returns>
+        private static string GetFireBaseJSONString(string resourceAddress)
+        {
+            using (var jreader = new JsonTextReader(new StringReader(resourceAddress)))
+            {
+                jreader.Read();
+                jreader.Read();
+                jreader.Read();
+                return jreader.Value.ToString();
+            }
+        }
+
+
+    }
+}

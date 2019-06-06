@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{32EBDF27-54CB-432E-B9C5-F24997506984}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>EBRDriver</RootNamespace>
+    <AssemblyName>EBRDriver</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EyeXFramework, Version=1.8.503.0, Culture=neutral, PublicKeyToken=70326046dcdce6cb, processorArchitecture=MSIL">
+      <HintPath>..\packages\Tobii.EyeX.Framework.1.8.503\lib\net40\EyeXFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Renci.SshNet, Version=2016.1.0.0, Culture=neutral, PublicKeyToken=1cee9f8bde3db106, processorArchitecture=MSIL">
+      <HintPath>..\packages\SSH.NET.2016.1.0\lib\net40\Renci.SshNet.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Tobii.EyeX.Client.Net20, Version=1.8.504.0, Culture=neutral, PublicKeyToken=70326046dcdce6cb, processorArchitecture=MSIL">
+      <HintPath>..\packages\Tobii.EyeX.Client.1.8.504\lib\net20\Tobii.EyeX.Client.Net20.dll</HintPath>
+    </Reference>
+    <Reference Include="Tobii.Interaction.Model, Version=0.7.3.333, Culture=neutral, PublicKeyToken=70326046dcdce6cb, processorArchitecture=MSIL">
+      <HintPath>..\packages\Tobii.Interaction.0.7.3\lib\net45\Tobii.Interaction.Model.dll</HintPath>
+    </Reference>
+    <Reference Include="Tobii.Interaction.Net, Version=0.7.3.333, Culture=neutral, PublicKeyToken=70326046dcdce6cb, processorArchitecture=MSIL">
+      <HintPath>..\packages\Tobii.Interaction.0.7.3\lib\net45\Tobii.Interaction.Net.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MainWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainWindow.Designer.cs">
+      <DependentUpon>MainWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainProgram.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="MainWindow.resx">
+      <DependentUpon>MainWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CommandMotion\CommandMotion.csproj">
+      <Project>{4d6bd79a-edbf-4913-842d-a79164317759}</Project>
+      <Name>CommandMotion</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Enumerations\Enumerations.csproj">
+      <Project>{A2839905-8C2B-49AC-A0CE-6D54AED0D9FC}</Project>
+      <Name>Enumerations</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GazeRectangle\GazeRectangle.csproj">
+      <Project>{87985331-a101-4601-b239-b72aa9bea5b0}</Project>
+      <Name>GazeRectangle</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HttpConnector\ConnectorHttp.csproj">
+      <Project>{b271072a-aa83-455e-88f3-ea3ff51e219a}</Project>
+      <Name>ConnectorHttp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PreferencesStorage\PreferencesStorage.csproj">
+      <Project>{3e9c53c1-1855-4eb2-830f-35c6da1a68b8}</Project>
+      <Name>PreferencesStorage</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SshConnector\ConnectorSsh.csproj">
+      <Project>{e3646f17-9689-46aa-8a05-a98968717655}</Project>
+      <Name>ConnectorSsh</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StreamGaze\StreamGaze.csproj">
+      <Project>{2524ef5f-e4e0-46f3-82e1-16ab235138e4}</Project>
+      <Name>StreamGaze</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StreamMind\StreamMind.csproj">
+      <Project>{0b4482ca-386b-4f66-a352-46dd43306c15}</Project>
+      <Name>StreamMind</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VideoStream\StreamVideo.csproj">
+      <Project>{54C6C476-99B7-4D74-B323-B39FCAFA2399}</Project>
+      <Name>StreamVideo</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Tobii.Interaction.0.7.3\build\Tobii.Interaction.targets" Condition="Exists('..\packages\Tobii.Interaction.0.7.3\build\Tobii.Interaction.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Tobii.Interaction.0.7.3\build\Tobii.Interaction.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Tobii.Interaction.0.7.3\build\Tobii.Interaction.targets'))" />
+    <Error Condition="!Exists('..\packages\Tobii.EyeX.Client.1.8.504\build\Tobii.EyeX.Client.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Tobii.EyeX.Client.1.8.504\build\Tobii.EyeX.Client.targets'))" />
+  </Target>
+  <Import Project="..\packages\Tobii.EyeX.Client.1.8.504\build\Tobii.EyeX.Client.targets" Condition="Exists('..\packages\Tobii.EyeX.Client.1.8.504\build\Tobii.EyeX.Client.targets')" />
+</Project>

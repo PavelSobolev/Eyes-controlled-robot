@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2524EF5F-E4E0-46F3-82E1-16AB235138E4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>StreamGaze</RootNamespace>
+    <AssemblyName>StreamGaze</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+    <None Include="Tobii\API-Reference.pdf" />
+    <None Include="Tobii\SDK-License_en.pdf" />
+    <None Include="Tobii\SDK-License_zh.pdf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="GazeStream.cs" />
+    <Compile Include="Tobii\Tobii.StreamEngine.Interop.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="EyeXFramework, Version=1.8.503.0, Culture=neutral, PublicKeyToken=70326046dcdce6cb, processorArchitecture=MSIL">
+      <HintPath>..\packages\Tobii.EyeX.Framework.1.8.503\lib\net40\EyeXFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="Tobii.EyeX.Client.Net20, Version=1.8.504.0, Culture=neutral, PublicKeyToken=70326046dcdce6cb, processorArchitecture=MSIL">
+      <HintPath>..\packages\Tobii.EyeX.Client.1.8.504\lib\net20\Tobii.EyeX.Client.Net20.dll</HintPath>
+    </Reference>
+    <Reference Include="Tobii.Interaction.Model, Version=0.7.3.333, Culture=neutral, PublicKeyToken=70326046dcdce6cb, processorArchitecture=MSIL">
+      <HintPath>..\packages\Tobii.Interaction.0.7.3\lib\net45\Tobii.Interaction.Model.dll</HintPath>
+    </Reference>
+    <Reference Include="Tobii.Interaction.Net, Version=0.7.3.333, Culture=neutral, PublicKeyToken=70326046dcdce6cb, processorArchitecture=MSIL">
+      <HintPath>..\packages\Tobii.Interaction.0.7.3\lib\net45\Tobii.Interaction.Net.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Enumerations\Enumerations.csproj">
+      <Project>{a2839905-8c2b-49ac-a0ce-6d54aed0d9fc}</Project>
+      <Name>Enumerations</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GazeRectangle\GazeRectangle.csproj">
+      <Project>{87985331-a101-4601-b239-b72aa9bea5b0}</Project>
+      <Name>GazeRectangle</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PointExtention\ClassesExtension.csproj">
+      <Project>{3c2e77f4-4fc9-4c23-9338-45a8b2697c98}</Project>
+      <Name>ClassesExtension</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Tobii.Interaction.0.7.3\build\Tobii.Interaction.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Tobii.Interaction.0.7.3\build\Tobii.Interaction.targets'))" />
+    <Error Condition="!Exists('..\packages\Tobii.EyeX.Client.1.8.504\build\Tobii.EyeX.Client.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Tobii.EyeX.Client.1.8.504\build\Tobii.EyeX.Client.targets'))" />
+    <Error Condition="!Exists('..\packages\Tobii.StreamEngine.2.2.2.363\build\Tobii.StreamEngine.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Tobii.StreamEngine.2.2.2.363\build\Tobii.StreamEngine.targets'))" />
+  </Target>
+  <Import Project="..\packages\Tobii.Interaction.0.7.3\build\Tobii.Interaction.targets" Condition="Exists('..\packages\Tobii.Interaction.0.7.3\build\Tobii.Interaction.targets')" />
+  <Import Project="..\packages\Tobii.EyeX.Client.1.8.504\build\Tobii.EyeX.Client.targets" Condition="Exists('..\packages\Tobii.EyeX.Client.1.8.504\build\Tobii.EyeX.Client.targets')" />
+  <Import Project="..\packages\Tobii.StreamEngine.2.2.2.363\build\Tobii.StreamEngine.targets" Condition="Exists('..\packages\Tobii.StreamEngine.2.2.2.363\build\Tobii.StreamEngine.targets')" />
+</Project>

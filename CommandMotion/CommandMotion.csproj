@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4D6BD79A-EDBF-4913-842D-A79164317759}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>CommandMotion</RootNamespace>
+    <AssemblyName>CommandMotion</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MotionCommand.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GPIOSshCommand\CommandGPIO.csproj">
+      <Project>{183359ef-6e0e-4985-b225-f173a0163933}</Project>
+      <Name>CommandGPIO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HttpConnector\ConnectorHttp.csproj">
+      <Project>{b271072a-aa83-455e-88f3-ea3ff51e219a}</Project>
+      <Name>ConnectorHttp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PointExtention\ClassesExtension.csproj">
+      <Project>{3c2e77f4-4fc9-4c23-9338-45a8b2697c98}</Project>
+      <Name>ClassesExtension</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PreferencesStorage\PreferencesStorage.csproj">
+      <Project>{3e9c53c1-1855-4eb2-830f-35c6da1a68b8}</Project>
+      <Name>PreferencesStorage</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RobotCommand\CommandSsh.csproj">
+      <Project>{b2fb8e29-7e60-4522-a53c-ed7a9d3592bb}</Project>
+      <Name>CommandSsh</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SshConnector\ConnectorSsh.csproj">
+      <Project>{e3646f17-9689-46aa-8a05-a98968717655}</Project>
+      <Name>ConnectorSsh</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Renci.SshNet, Version=2016.1.0.0, Culture=neutral, PublicKeyToken=1cee9f8bde3db106" />
+    <Reference Include="System" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
