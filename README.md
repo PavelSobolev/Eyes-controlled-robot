@@ -16,4 +16,4 @@ The software implements following functions:
 
 ##### Overall idea of design of software and hardware system can be represented by the following diagram. 
 
-![]()`
+![App schema](https://github.com/PavelSobolev/Eyes-controlled-robot/blob/master/additional/principal.png)`
