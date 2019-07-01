@@ -2,6 +2,8 @@
 
 ##### The goal of this project is to design a desktop software (Windows) for providing users with eyes movements detection and tracking interface (with addition of brain-computer interface). 
 
+[Video capture from the window of the Windows application (Youtube)](https://youtu.be/QVo96w4uuyg)
+
 The software focusses mainly on studying ways of implementing such interfaces in modern software systems. The following problems are planned to be explored:
 * Hardware components, software components (operating systems, drivers, protocols, services) for creation and implementation of a robotized movable system.
 * Application programming interfaces and software development kits and technologies for implementation of eyes movements detection and tracking interface (ETI),
