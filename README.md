@@ -23,11 +23,11 @@ The software implements following functions:
 ![App schema](https://github.com/PavelSobolev/Eyes-controlled-robot/blob/master/additional/principal.png)`
 
 ### Used equipment 
-Eyes tracking device
+#### Eyes tracking device
 ![hard](https://github.com/PavelSobolev/Eyes-controlled-robot/blob/master/additional/01.jpeg)
-Mobile EEG (electroencephalograph)
+#### Mobile EEG (electroencephalograph)
 ![hard](https://github.com/PavelSobolev/Eyes-controlled-robot/blob/master/additional/02.jpeg)
-Movable robot
+#### Movable robot
 ![hard](https://github.com/PavelSobolev/Eyes-controlled-robot/blob/master/additional/03.png)
 
 ### User interface
