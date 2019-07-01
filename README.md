@@ -5,6 +5,19 @@
 #### [Video capture from the window of the application (YouTube)](https://youtu.be/QVo96w4uuyg)
 #### [Presenation of the project (PPTX)](https://github.com/PavelSobolev/Eyes-controlled-robot/blob/master/additional/Capstone_Presenation_V4.pptx)
 
+### Used technologies 
+1. Operating systems: Windows, Linux
+2. .NET Framework and third party .NET APIs
+3. Visual C#
+4. MS Visual Studio
+5. Tobii Gaze API for .NET
+6. NeuroSky MindWave Web REST API
+7. Google Firebase (JSON)
+8. NodeJS, Java Script
+9. Secure Shell (SSH for Windows, Linux), SSH API for .NET
+10. Python
+...
+
 ### Description
 
 The software focusses mainly on studying ways of implementing such interfaces in modern software systems. The following problems are planned to be explored:
