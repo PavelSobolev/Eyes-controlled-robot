@@ -2,7 +2,10 @@
 
 ##### The goal of this project is to design a desktop software (Windows) for providing users with eyes movements detection and tracking interface (with addition of brain-computer interface). 
 
-### [Video capture from the window of the application (Youtube)](https://youtu.be/QVo96w4uuyg)
+#### [Video capture from the window of the application (YouTube)](https://youtu.be/QVo96w4uuyg)
+#### [Presenation of the project (PPTX)](https://github.com/PavelSobolev/Eyes-controlled-robot/blob/master/additional/Capstone_Presenation_V4.pptx)
+
+### Description
 
 The software focusses mainly on studying ways of implementing such interfaces in modern software systems. The following problems are planned to be explored:
 * Hardware components, software components (operating systems, drivers, protocols, services) for creation and implementation of a robotized movable system.
@@ -17,5 +20,9 @@ The software implements following functions:
 * combining of ETI, BCI for driving a robot being implemented in this project (MS Windows, in the form of standard binary executable file).
 
 ##### Overall idea of design of software and hardware system can be represented by the following diagram. 
-
 ![App schema](https://github.com/PavelSobolev/Eyes-controlled-robot/blob/master/additional/principal.png)`
+
+### Used equipment 
+![hard](https://github.com/PavelSobolev/Eyes-controlled-robot/blob/master/additional/01.jpeg)
+![hard](https://github.com/PavelSobolev/Eyes-controlled-robot/blob/master/additional/02.jpeg)
+![hard](https://github.com/PavelSobolev/Eyes-controlled-robot/blob/master/additional/03.png)
