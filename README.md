@@ -1,4 +1,4 @@
-# Eyes-controlled-robot
+# Eyes controlled robot
 
 ##### The goal of this project is to design a desktop software (Windows) for providing users with eyes movements detection and tracking interface (with addition of brain-computer interface). 
 
