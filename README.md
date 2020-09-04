@@ -1,6 +1,6 @@
 # Eyes controlled robot
 
-##### The goal of this project is to design a desktop software (Windows) for providing users with eyes movements detection and tracking interface (with addition of brain-computer interface). 
+##### The goal of this project is to design a desktop software (Windows) for providing users with eyes movements detection interface (with addition of brain-computer interface) to control motion of a robot.
 
 #### [Video capture from the window of the application (YouTube)](https://youtu.be/QVo96w4uuyg)
 #### [Presenation of the project (PPTX)](https://github.com/PavelSobolev/Eyes-controlled-robot/blob/master/additional/Capstone_Presenation_V4.pptx)
