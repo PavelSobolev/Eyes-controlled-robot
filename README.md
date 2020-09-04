@@ -1,6 +1,6 @@
-# Eyes controlled robot
+# Software and hardware system: movable robot controlled by user's gaze
 
-##### The goal of this project is to design a desktop software (Windows) for providing users with eyes movements detection interface (with addition of brain-computer interface) to control motion of a robot.
+##### The goal of this project is to plan, design and create a movable robot and a desktop software (Windows) for providing users with eyes movements detection interface (with addition of brain-computer interface) to control motion of the robot.
 
 #### [Video capture from the window of the application (YouTube)](https://youtu.be/QVo96w4uuyg)
 #### [Presenation of the project (PPTX)](https://github.com/PavelSobolev/Eyes-controlled-robot/blob/master/additional/Capstone_Presenation_V4.pptx)
@@ -16,7 +16,13 @@
 8. NodeJS, Java Script
 9. Secure Shell (SSH for Windows, Linux), SSH API for .NET
 10. Python
-...
+
+### Hardware components 
+1. Personal computer
+2. Raspberry PI (3) computer
+3. Components of the robot (Connectors, DC Motors and Motor Driver IC, Breadboar, Web camera)
+4. Tobii eyes tracker
+5. Mobile EEG (electroencephalograph)
 
 ### Description
 
