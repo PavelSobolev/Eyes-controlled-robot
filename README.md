@@ -3,7 +3,7 @@
 ##### The goal of this project is to plan, design and create a movable robot and a desktop software (Windows) for providing users with eyes movements detection interface (with addition of brain-computer interface) to control motion of the robot.
 
 #### [Video capture from the window of the application (YouTube)](https://youtu.be/QVo96w4uuyg)
-#### [Presenation of the project (PPTX)](https://github.com/PavelSobolev/Eyes-controlled-robot/blob/master/additional/Capstone_Presenation_V4.pptx)
+<!--#### [Presenation of the project (PPTX)](https://github.com/PavelSobolev/Eyes-controlled-robot/blob/master/additional/Capstone_Presenation_V4.pptx)-->
 
 ### Used technologies 
 1. Operating systems: Windows, Linux
